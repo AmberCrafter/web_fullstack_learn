@@ -2,6 +2,56 @@
 homework for ideasky
 
 ---
+## Infomation
+ + backend
+    - FastAPI
+    - Proxy: uvicorn
+    - database: sqlite3
+    - no ORM
+    - port: 8000
+ + frontend
+    - pure HTML, CSS, JS
+    - char.js
+    - page:
+        1. index.html
+        2. control.html
+            * select data by valid datetime
+            * insert a new data
+            * update data
+            * delete data
+            * sync forcast data
+
+index.html
+![index pahe](./Index.png)
+
+control.html
+![control pahe](./control.png)
+
+## Usage
+
+1. install python lib
+
+```bash
+cd ~/backend/
+pip install -r requirements.txt
+```
+
+2. Run backend server
+
+```bash
+cd ~/backend/
+./RunServer.sh
+```
+
+3. deploy frontend
+ - vscode live server
+ - nginx
+ - apache
+ - IIS
+ - others
+
+
+---
 ### dataset description
 
 | Parameter                     | Data Type | Description                           |

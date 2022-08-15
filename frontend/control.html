@@ -19,14 +19,18 @@
             <div class="data-selector">
                 選擇時間: 
                 <select id="data-selector-time">
-                    <option>請選擇時間</option>
+                    <option value="">請選擇時間 / 新增資料</option>
                 </select>
+            <div class="float-right">
+                <button onclick="sync_forcast()">Sync Forcast</button>
+                <button onclick="get_new_data()">Select</button>
+                <button onclick="upload_data()">Insert/Update</button>
+                <button onclick="delete_data()">Delete</button>
+            </div>
             </div>
             
             <hr>
-            <div class="grid-2col">
-                
-            </div>
+            <div class="grid-col" id="element-container"></div>
         </div>
     </body>
 </html>
