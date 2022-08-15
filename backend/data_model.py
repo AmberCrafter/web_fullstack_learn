@@ -47,3 +47,6 @@ class ResponseGetForcase(BaseModel):
 
 class ResponseGetDatetime(BaseModel):
     results: list[datetime.datetime]
+
+class ResponseListString(BaseModel):
+    results: list[str | None]

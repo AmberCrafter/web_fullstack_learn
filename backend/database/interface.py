@@ -150,12 +150,12 @@ class Database(metaclass = Singleton_meta):
         return self.fa()
 
     def get_id(self, index: int):
-        query = f"select * from {TABLENAME} where id={index} order by datetimelst asc;"
+        query = f"select * from {TABLENAME} where id={index};"
         self.exe(query)
         return self.fa()
 
     def get_datetime(self, datetimelst: datetime.datetime):
-        query = f'select * from {TABLENAME} where datetimelst="{datetimelst}" order by datetimelst asc;'
+        query = f'select * from {TABLENAME} where datetimelst="{datetimelst}";'
         self.exe(query)
         return self.fa()
 

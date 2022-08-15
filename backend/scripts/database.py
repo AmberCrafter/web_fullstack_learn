@@ -5,7 +5,7 @@ sys.path.append(os.path.join("/workspaces/web_fullstack_learn/backend/"))
 import datetime
 from dateutil.parser import parse
 
-from data_model import ForcastInfo, Parameter, ResponseGetDatetime
+from data_model import ForcastInfo, Parameter, ResponseGetDatetime, ResponseGetForcase, ResponseListString
 from database import interface as dbi
 
 def put(parameter: Parameter, *args, **kwargs)->bool:
@@ -40,7 +40,10 @@ def get_forcast_nday(days: int) -> list[ForcastInfo]:
         for idx,header in enumerate(headers):
 
             if header in paras:
-                tmp[header] = values[idx] if values[idx]!=' ' else None
+                if (not values[idx] in [' ', '', 'None']) and (not isinstance(values[idx], type(None))):
+                    tmp[header] = values[idx]
+                else:
+                    tmp[header] = None
         res.append(ForcastInfo.parse_obj(tmp))
 
     return res
@@ -53,4 +56,33 @@ def get_all_datetime() -> ResponseGetDatetime:
     db = dbi.Database()
     res = dict(results=[parse(val[0]) for val in db.get_all_singal_para("datetimelst")])
     res = ResponseGetDatetime.parse_obj(res)
+    return res
+
+def get_forcast_datetime(datetimelst: datetime.datetime) -> ResponseGetForcase:
+    db = dbi.Database()
+    datas = db.get_datetime(datetimelst)
+
+    headers = [val[0] for val in db.get_header()]
+    paras = list(ForcastInfo.__fields__.keys())
+    res = []
+    for values in datas:
+        tmp = {}
+        for idx,header in enumerate(headers):
+            if header in paras:
+                if (not values[idx] in [' ', '', 'None']) and (not isinstance(values[idx], type(None))):
+                    tmp[header] = values[idx]
+                else:
+                    tmp[header] = None
+        res.append(ForcastInfo.parse_obj(tmp))
+
+    res = dict(results=res)
+    res = ResponseGetForcase.parse_obj(res)
+    return res
+
+def get_header() -> ResponseListString:
+    db = dbi.Database()
+    headers = [val[0] for val in db.get_header()]
+    res = ResponseListString.parse_obj(
+        dict(results=headers)
+    )
     return res

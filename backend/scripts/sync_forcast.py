@@ -10,6 +10,7 @@ from dateutil.parser import parse
 
 load_dotenv()
 DATETIMEFORMAT="%Y-%m-%d %H:%M:%S"
+CWBAPI_TOKEN="CWB-496E92CB-5AA7-40D7-B473-DDEC64D7DDC4"
 
 ParameterMap = dict(
     PoP12h = "pop12h",
@@ -43,7 +44,8 @@ def sync_forcast():
         st=""
 
     query = 'https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-007?Authorization={CWBAPI_TOKEN}&format=JSON&locationName={locationName}&timeFrom={st}'.format(
-            CWBAPI_TOKEN=os.getenv("CWB_OPENAPI_TOKEN"),
+            # CWBAPI_TOKEN=os.getenv("CWB_OPENAPI_TOKEN"),
+            CWBAPI_TOKEN=CWBAPI_TOKEN,
             locationName="中壢區",
             st=st
         )

@@ -2,7 +2,7 @@ import datetime
 from typing import Union
 from fastapi import FastAPI
 from database import interface as dbi
-from data_model import ForcastInfo, Parameter, ResponseGetDatetime, ResponseGetForcase
+from data_model import ForcastInfo, Parameter, ResponseGetDatetime, ResponseGetForcase, ResponseListString
 from fastapi.middleware.cors import CORSMiddleware
 
 from scripts import database as dbscript
@@ -82,6 +82,23 @@ async def forcast_get_all_datetime():
     Get all forcast data's datetime
     """
     return dbscript.get_all_datetime()
+
+# select single data by datetime
+@app.get("/forcast/select/{Datetime}", response_model=ResponseGetForcase)
+async def forcast_select_datetime(Datetime: datetime.datetime):
+    """
+    Select data by datetime
+    Datetime format: YYYY-MM-DD HH:MM:SS
+    """
+    return dbscript.get_forcast_datetime(Datetime)
+
+# get header
+@app.get("/forcast/get_header", response_model=ResponseListString)
+async def forcast_get_header():
+    """
+    Get all forcast data's datetime
+    """
+    return dbscript.get_header()
 
 # if __name__=="__main__":
 #     app.
