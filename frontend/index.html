@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>中壢區天氣預報</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        
+        
+        
+        <link rel="stylesheet" href="/frontend/css/style.css">
+        <script src="/frontend/javascript/tool.js"></script>
+        <script src="/frontend/javascript/database.js"></script>
+        <script src="/frontend/javascript/graph.js"></script>
+        <script src="/frontend/javascript/click_event.js"></script>
+    </head>
+    <body onload="graph();">
+        <div class="center-conatiner page-title">
+            <div class="block">
+                <h1>天氣預報 - 中壢區</h1>
+            </div>
+        </div>
+
+        <div>
+            <div><h2>預報摘要</h2></div>
+            <div class="card-container">
+                <div class="card-header"></div>
+                <div class="card-body">
+                    <div class="clear">
+                        <div class="float-left">時間:&nbsp;&nbsp;</div>
+                        <div class="float-left" id="weather-card-datetime"></div>
+                        <div class="float-right" id="weather-card-page"></div>
+                    </div><br>
+                    <hr>
+                    <div id="weather-card-info"></div>
+                </div>
+                
+                <br><br>
+                <div class="float-right control-box">
+                    <button onclick="card_page_prev()">prev</button>
+                    <button onclick="card_page_next()">next</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="graph-container">
+            <div><h2>一週氣溫 (°C)</h2></div>
+            <canvas id="temperature"></canvas>
+        </div>
+
+        <div class="graph-container">
+            <div><h2>一週濕度 (%)</h2></div>
+            <canvas id="humidity"></canvas>
+        </div>
+        
+        <div class="graph-container">
+            <div><h2>一週降雨機率 (%)</h2></div>
+            <canvas id="precipitation"></canvas>
+        </div>
+        
+        <div class="graph-container">
+            <div><h2>一週風速 (m/s)</h2></div>
+            <canvas id="windspeed"></canvas>
+        </div>
+
+        <div>
+            <div><h2>一週風向</h2></div>
+            <div class="table-container">
+                <div class="weekly-table-daynight table-header table-inner-container" id="weekly-winddir-header"></div>
+                <div class="weekly-table-daynight table-body table-inner-container" id="weekly-winddir-body"></div>
+            </div>
+        </div>
+    </body>
+</html>

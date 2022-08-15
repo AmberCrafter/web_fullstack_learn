@@ -1,0 +1,7 @@
+.center-conatiner {
+    display: flex;
+    justify-content: center;    /* 水平置中 */
+    align-items: center;        /* 垂直置中 */
+    background-color: rgb(171, 210, 252);
+    border-radius: 15px;
+}
