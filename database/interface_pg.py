@@ -100,10 +100,10 @@ class Database(metaclass = Singleton_meta):
         # return True
 
     def get_header(self):
-        query = f"Select column_name from information_schema.columns where table_name='{TABLENAME}';"
+        query = f"Select column_name, data_type from information_schema.columns where table_name='{TABLENAME}';"
         self.exe(query)
         info = self.fa()
-        print(info)
+        # print(info)
         # return [(val[1], val[2]) for val in info]
         return info
 
