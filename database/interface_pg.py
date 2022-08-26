@@ -65,6 +65,39 @@ class Database(metaclass = Singleton_meta):
             return False
         return True
 
+    def init(self):
+        # at: 體感溫度
+        table_information = """
+            id serial primary key,
+            datetimelst timestamp without time zone,
+            pop12h int,
+            temperature_avg int,
+            temperature_min int,
+            temperature_max int,
+            temperature_dew int,
+            humidity_avg int,
+            ci_min_index int,
+            ci_min_description text,
+            ci_max_index int,
+            ci_max_description text,
+            windspeed int,
+            winddirection text,
+            at_min int,
+            at_max int,
+            weather text,
+            uvi int, 
+            description text,
+            updatetime timestamp without time zone
+        """
+
+        # try:
+        query = f"create table if not exists {TABLENAME} ({table_information});"
+        self.exe(query)
+        # except Exception as err:
+        #     print(err)
+        #     return False
+        # return True
+
     def get_header(self):
         query = f'Select * from information_schema.columns;'
         self.exe(query)

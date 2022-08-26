@@ -30,13 +30,11 @@ app.add_middleware(
 
 
 # create/update
-@app.get("/database")
+@app.get("/forcast/init")
 async def checker(): 
     db = dbi.Database()
-    query = "Select * from forcast;"
-    db.exe(query)
-    print(db.fa())
-    print(db)
+    db.init()
+    print("Init done")
 
 
 @app.post("/forcast/put/{Datetime}/")
