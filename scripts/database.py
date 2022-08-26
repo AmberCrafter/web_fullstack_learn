@@ -29,6 +29,7 @@ def get_forcast_nday(days: int) -> list[ForcastInfo]:
     endtime = starttime + datetime.timedelta(days=days)
     db = dbi.Database()
     datas = db.get_datetime_range(starttime, endtime)
+    print(datas)
 
     headers = [val[0] for val in db.get_header()]
     
