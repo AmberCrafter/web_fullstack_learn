@@ -56,9 +56,10 @@ def delete_forcast(datetimelst: datetime.datetime) -> bool:
 
 def get_all_datetime() -> ResponseGetDatetime:
     db = dbi.Database()
-    print(db.get_all_singal_para("datetimelst"))
+    # print(db.get_all_singal_para("datetimelst"))
     
-    res = dict(results=[parse(val[0]) for val in db.get_all_singal_para("datetimelst")])
+    # res = dict(results=[parse(val[0]) for val in db.get_all_singal_para("datetimelst")])
+    res = dict(results=[val[0] for val in db.get_all_singal_para("datetimelst")]) # pg_response is datetime
     res = ResponseGetDatetime.parse_obj(res)
     return res
 
