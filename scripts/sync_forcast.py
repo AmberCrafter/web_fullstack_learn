@@ -1,8 +1,8 @@
 import os
 import sys
 # add backend folder to path
-sys.path.append(os.path.join("/workspaces/web_fullstack_learn/backend/"))
-from database import interface as dbi
+sys.path.append(os.path.join("/workspaces/web_fullstack_learn/"))
+from database import interface_pg as dbi
 import requests
 from dotenv import load_dotenv
 import datetime

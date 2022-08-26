@@ -1,4 +1,4 @@
-import sqlite3
+import psycopg2
 from typing import Optional, Union
 from dotenv import load_dotenv
 import os
@@ -24,8 +24,8 @@ class Database(metaclass = Singleton_meta):
 
     def __init__(self):
         # database_path = os.getenv("QUEST_DATABASE")
-        database_path = "/workspaces/web_fullstack_learn/backend/database/data/forcast.sql"
-        self.db = sqlite3.connect(database_path)
+        database_path = os.getenv("DATABASE_URL")
+        self.db = psycopg2.connect(database_path, sslmode='require')
         self.cur = self.db.cursor()
         self.exe = self.cur.execute
         self.fa = self.cur.fetchall
@@ -35,7 +35,7 @@ class Database(metaclass = Singleton_meta):
     def __table_create_forcasat(self) -> bool:
         # at: 體感溫度
         table_information = """
-            id integer primary key autoincrement,
+            id serial primary key,
             datetimelst text,
             pop12h int,
             temperature_avg int,
@@ -66,7 +66,7 @@ class Database(metaclass = Singleton_meta):
         return True
 
     def get_header(self):
-        query = f"PRAGMA table_info({TABLENAME});"
+        query = f'Select column_name,data_type from information_schema.columns where table_schema = "public" and table_name = "{TABLENAME}";'
         self.exe(query)
         info = self.fa()
         return [(val[1], val[2]) for val in info]

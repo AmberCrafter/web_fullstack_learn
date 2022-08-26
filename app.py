@@ -1,7 +1,7 @@
 import datetime
 from typing import Union
 from fastapi import FastAPI
-from database import interface as dbi
+from database import interface_pg as dbi
 from data_model import ForcastInfo, Parameter, ResponseGetDatetime, ResponseGetForcase, ResponseListString
 from fastapi.middleware.cors import CORSMiddleware
 
