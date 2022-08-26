@@ -155,7 +155,7 @@ class Database(metaclass = Singleton_meta):
             if not isinstance(tmp, type(None)):
                 headers.append(key)
                 if type(tmp)==datetime.datetime:
-                    values.append(f'"{tmp.strftime(DATETIMEFORMAT)}"')
+                    values.append(f"'{tmp.strftime(DATETIMEFORMAT)}'")
                 elif type(tmp)==str:
                     values.append(f'"{tmp}"')
                 else: 
