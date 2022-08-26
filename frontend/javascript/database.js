@@ -1,5 +1,5 @@
 // get data
-const DATABASE_URL_BASE = 'http://127.0.0.1:8000/forcast';
+const DATABASE_URL_BASE = 'https://ideasky-fullstack-backend.herokuapp.com/forcast';
 
 async function get_forcast(days) {
     url = String.format("{0}/get/{1}", DATABASE_URL_BASE, 7);
