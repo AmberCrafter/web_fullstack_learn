@@ -61,6 +61,7 @@ class Database(metaclass = Singleton_meta):
             query = f"create table if not exists {TABLENAME} ({table_information});"
             self.exe(query)
         except Exception as err:
+            self.db.rollback()
             print(err)
             return False
         return True
@@ -92,7 +93,6 @@ class Database(metaclass = Singleton_meta):
 
         # try:
         query = f"create table {TABLENAME} ({table_information});"
-        print(query)
         self.exe(query)
         # except Exception as err:
         #     print(err)
@@ -219,6 +219,7 @@ class Database(metaclass = Singleton_meta):
             self.db.commit()
             return True
         except Exception as err:
+            self.db.rollback()
             print(f"{currtime} [Error]: Update data failed. {err}")
             return False
 
@@ -236,6 +237,7 @@ class Database(metaclass = Singleton_meta):
             self.db.commit()
             return True
         except Exception as err:
+            self.db.rollback()
             print(f"{currtime} [Error]: Update data failed. {err}")
             return False
 
@@ -247,6 +249,7 @@ class Database(metaclass = Singleton_meta):
             self.db.commit()
             return True
         except Exception as err:
+            self.db.rollback()
             print(f"{currtime} [Error]: Update data failed. {err}")
             return False
 
@@ -258,6 +261,7 @@ class Database(metaclass = Singleton_meta):
             self.db.commit()
             return True
         except Exception as err:
+            self.db.rollback()
             print(f"{currtime} [Error]: Update data failed. {err}")
             return False
 

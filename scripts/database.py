@@ -44,6 +44,7 @@ def get_forcast_nday(days: int) -> list[ForcastInfo]:
                     tmp[header] = values[idx]
                 else:
                     tmp[header] = None
+        print(tmp)
         res.append(ForcastInfo.parse_obj(tmp))
 
     return res
