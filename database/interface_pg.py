@@ -157,7 +157,7 @@ class Database(metaclass = Singleton_meta):
                 if type(tmp)==datetime.datetime:
                     values.append(f"'{tmp.strftime(DATETIMEFORMAT)}'")
                 elif type(tmp)==str:
-                    values.append(f'"{tmp}"')
+                    values.append(f"'{tmp}'")
                 else: 
                     values.append(str(tmp))
         query = "Insert into {TABLENAME} ({headers}) values ({values});".format(
