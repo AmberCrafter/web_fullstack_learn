@@ -30,6 +30,12 @@ app.add_middleware(
 
 
 # create/update
+@app.get("/database")
+async def checker(): 
+    db = dbi.Database()
+    print(db)
+
+
 @app.post("/forcast/put/{Datetime}/")
 async def forcast_put(Datetime: datetime.datetime, parameter: Parameter):
     """
