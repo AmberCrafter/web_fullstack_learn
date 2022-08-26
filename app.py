@@ -33,6 +33,9 @@ app.add_middleware(
 @app.get("/database")
 async def checker(): 
     db = dbi.Database()
+    query = "Select * from forcast;"
+    db.exe(query)
+    print(db.fa())
     print(db)
 
 
