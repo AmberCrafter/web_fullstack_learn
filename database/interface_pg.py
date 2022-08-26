@@ -36,7 +36,7 @@ class Database(metaclass = Singleton_meta):
         # at: 體感溫度
         table_information = """
             id serial primary key,
-            datetimelst text,
+            datetimelst timestamp without time zone,
             pop12h int,
             temperature_avg int,
             temperature_min int,
@@ -54,7 +54,7 @@ class Database(metaclass = Singleton_meta):
             weather text,
             uvi int, 
             description text,
-            updatetime text
+            updatetime timestamp without time zone
         """
 
         try:
