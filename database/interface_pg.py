@@ -165,6 +165,7 @@ class Database(metaclass = Singleton_meta):
             headers = ','.join(headers),
             values = ','.join(values),
         )
+        query.replace("' '", "NULL")
         self.exe(query)
         self.db.commit()
 
