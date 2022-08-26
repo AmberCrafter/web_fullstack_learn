@@ -91,7 +91,8 @@ class Database(metaclass = Singleton_meta):
         """
 
         # try:
-        query = f"create table if not exists {TABLENAME} ({table_information});"
+        query = f"create table {TABLENAME} ({table_information});"
+        print(query)
         self.exe(query)
         # except Exception as err:
         #     print(err)
