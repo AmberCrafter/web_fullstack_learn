@@ -38,6 +38,7 @@ def sync_forcast():
     last_data = db.get_last()
     if len(last_data)>0:
         # st = parse(last_data[0][1])  # string
+        st = last_data[0][1]
         st+=datetime.timedelta(seconds=1)
         st = st.strftime("%Y-%m-%dT%H:%M:%S")
     else:
