@@ -1,1 +1,1 @@
-web: bin/start-nginx bundle exec gunicorn -w 1 -k uvicorn.workers.UvicornWorker app:app
+web: bin/start-nginx bundle exec uvicorn backend.main:app --host=0.0.0.0 --port=${PORT:-5000}
