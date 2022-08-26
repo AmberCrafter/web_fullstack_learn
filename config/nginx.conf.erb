@@ -34,8 +34,8 @@ http {
 		keepalive_timeout 5;
 		client_max_body_size <%= ENV['NGINX_CLIENT_MAX_BODY_SIZE'] || 1 %>M;
         
-        location ^~ /forcast {
-            root /forcast;
+        location ~ /forcast {
+            root /;
         }
 
         location / {
