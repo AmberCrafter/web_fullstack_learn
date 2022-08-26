@@ -190,12 +190,12 @@ class Database(metaclass = Singleton_meta):
         return self.fa()
 
     def get_datetime(self, datetimelst: datetime.datetime):
-        query = f'select * from {TABLENAME} where datetimelst="{datetimelst}";'
+        query = f"select * from {TABLENAME} where datetimelst='{datetimelst}';"
         self.exe(query)
         return self.fa()
 
     def get_datetime_range(self, starttime: datetime.datetime, endtime: datetime.datetime):
-        query = f'select * from {TABLENAME} where datetimelst between "{starttime}" and "{endtime}" order by datetimelst asc;'
+        query = f"select * from {TABLENAME} where datetimelst between '{starttime}' and '{endtime}' order by datetimelst asc;"
         self.exe(query)
         return self.fa()
 
@@ -212,7 +212,7 @@ class Database(metaclass = Singleton_meta):
 
         values = [str(val) if type(val)==int else f'"{val}"' for val in values]
         setter = ','.join([f"{key}={val}" for key, val in zip(parameters, values)])
-        query = f'update {TABLENAME} set {setter}, updatetime="{currtime}" where id={index};'
+        query = f"update {TABLENAME} set {setter}, updatetime='{currtime}' where id={index};"
         try:
             self.exe(query)
             self.db.commit()
@@ -229,7 +229,7 @@ class Database(metaclass = Singleton_meta):
 
         values = [str(val) if type(val)==int else f'"{val}"' for val in values]
         setter = ','.join([f"{key}={val}" for key, val in zip(parameters, values)])
-        query = f'update {TABLENAME} set {setter}, updatetime="{currtime}" where datetimelst="{datetimelst.strftime(DATETIMEFORMAT)}";'
+        query = f"update {TABLENAME} set {setter}, updatetime='{currtime}' where datetimelst='{datetimelst.strftime(DATETIMEFORMAT)}';"
         try:
             self.exe(query)
             self.db.commit()
@@ -251,7 +251,7 @@ class Database(metaclass = Singleton_meta):
 
     def delete_datetime(self, datetimelst: datetime.datetime) -> bool:
         currtime = datetime.datetime.now().strftime(DATETIMEFORMAT)
-        query = f'delete from {TABLENAME} where datetimelst="{datetimelst.strftime(DATETIMEFORMAT)}";'
+        query = f"delete from {TABLENAME} where datetimelst='{datetimelst.strftime(DATETIMEFORMAT)}';"
         try:
             self.exe(query)
             self.db.commit()
