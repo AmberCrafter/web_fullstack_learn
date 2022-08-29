@@ -1,6 +1,8 @@
 # web_fullstack_learn
 homework for ideasky
 
+Heroku: https://ideasky-fullstack-frontend.herokuapp.com/
+
 ---
 ## Infomation
  + backend
